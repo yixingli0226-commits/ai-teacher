@@ -41,7 +41,13 @@ finance-teacher-skill/
 
 ## Installation
 
-Copy the `finance-teacher` folder into your Codex skills directory.
+Codex discovers a skill when the skill folder itself is directly inside your Codex skills directory. In this repo, the actual skill folder is:
+
+```text
+finance-teacher/
+```
+
+So users should copy the `finance-teacher` folder into their Codex skills directory.
 
 On macOS or Linux:
 
@@ -56,6 +62,46 @@ C:\Users\<YourName>\.codex\skills\finance-teacher
 ```
 
 Then restart Codex so the skill can be discovered.
+
+### Install From GitHub
+
+Option 1: Download ZIP
+
+1. Open this GitHub repo.
+2. Click `Code` -> `Download ZIP`.
+3. Unzip the file.
+4. Copy the inner `finance-teacher` folder into your Codex skills directory.
+5. Restart Codex.
+
+Option 2: Clone with Git
+
+```bash
+git clone https://github.com/yixingli0226-commits/ai-teacher.git
+```
+
+Then copy:
+
+```text
+ai-teacher/finance-teacher
+```
+
+to:
+
+```text
+~/.codex/skills/finance-teacher
+```
+
+On Windows, copy it to:
+
+```text
+C:\Users\<YourName>\.codex\skills\finance-teacher
+```
+
+Important: do not place only the whole `ai-teacher` repo inside `.codex/skills` and expect Codex to discover it automatically. The `SKILL.md` file must be at:
+
+```text
+~/.codex/skills/finance-teacher/SKILL.md
+```
 
 ## Setup
 
