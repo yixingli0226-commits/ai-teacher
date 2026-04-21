@@ -17,3 +17,21 @@ __pycache__/
 
 # OS and local logs
 *.log
+
+# User course materials: keep copyrighted/private class files out of GitHub
+materials/
+lectures/
+transcripts/
+slides/
+recordings/
+course-files/
+*.ppt
+*.pptx
+*.pdf
+*.docx
+*.mp3
+*.mp4
+*.m4a
+*.wav
+*.srt
+*.vtt

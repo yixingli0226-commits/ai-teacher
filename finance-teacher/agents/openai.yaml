@@ -1,6 +1,6 @@
 interface:
   display_name: "Finance Teacher"
-  short_description: "Re-teach finance lectures with interactive review."
-  default_prompt: "Use $finance-teacher to build a 5-10 frame roadmap from my finance PPT and transcript, teach one frame at a time, then create a concise Word review document when I say 总结."
+  short_description: "Configurable finance lecture tutor with quizzes."
+  default_prompt: "Use $finance-teacher in Classroom Mode to build a framework roadmap from my finance PPT and transcript, teach one frame at a time, and quiz me interactively."
 policy:
   allow_implicit_invocation: true

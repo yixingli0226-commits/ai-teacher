@@ -2,6 +2,28 @@
 
 Use this reference when analyzing actual lecture transcripts and slides.
 
+## Configuration Heuristics
+
+Use `config/defaults.yaml` as the default behavior. If the user chooses a preset or custom settings, let that override defaults for the current session.
+
+Recommended defaults:
+
+- Preset: classroom
+- Language: mostly Chinese with only core English finance terms
+- Transcript/PPT weighting: 6.5/3.5
+- Framework pacing: one frame at a time
+- Quiz: AI-decided mixed questions
+- Difficulty: adaptive
+- Summary: concise Word review notes with Mistake Highlights
+
+When a user is new, offer three simple presets before advanced options:
+
+- Classroom Mode for steady learning.
+- Exam Mode for high-yield drilling.
+- Fast Review Mode for quick recall.
+
+Only expose advanced customization when the user asks for it or rejects the presets.
+
 ## Source Weighting
 
 Default weighting for lecture priority inference:

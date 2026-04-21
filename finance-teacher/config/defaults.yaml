@@ -1,0 +1,50 @@
+# Default configuration for the finance-teacher Codex skill.
+# Users can copy this file and adjust values for their own course.
+
+profile:
+  mode: classroom
+  language_mode: chinese_with_core_english_terms
+  learner_level: auto
+  learning_goal: course_review
+
+source_weighting:
+  transcript_weight: 6.5
+  ppt_weight: 3.5
+  background_knowledge_policy: clarify_only
+
+framework:
+  min_frames: 5
+  max_frames: 10
+  pacing: one_frame_at_a_time
+  wait_for_next_frame: true
+
+quiz:
+  mode: ai_decides
+  questions_per_frame_min: 2
+  questions_per_frame_max: 4
+  default_question_types:
+    - concept_check
+    - application
+    - misconception_check
+  allow_question_types:
+    - multiple_choice
+    - true_false
+    - short_answer
+    - calculation_setup
+    - mini_case
+  difficulty: adaptive
+  feedback_style: explain_mistake_immediately
+  record_mistakes: true
+
+summary:
+  trigger: summary_request
+  output_format: docx
+  detail_level: concise
+  include_frameworks: true
+  include_key_terms: true
+  include_formulas: true
+  include_mistake_highlights: true
+
+privacy:
+  do_not_commit_course_materials: true
+  ignore_real_slides_and_transcripts: true

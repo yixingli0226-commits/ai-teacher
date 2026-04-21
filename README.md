@@ -7,6 +7,9 @@ It is designed for learners who want a tutor to infer what the instructor actual
 ## What It Does
 
 - Uses both lecture transcripts and PPT/slides.
+- Includes a setup flow for language, weighting, quiz style, difficulty, and summary preferences.
+- Provides three learning presets: Classroom Mode, Exam Mode, and Fast Review Mode.
+- Supports Advanced Custom Mode for users who want full control.
 - Weights the transcript at 6.5/10 and the PPT/slides at 3.5/10 when inferring lecture priorities.
 - Uses the transcript for emphasis, pacing, teacher intent, examples, warnings, and exam cues.
 - Uses the PPT/slides for formal definitions, formulas, diagrams, tables, official terminology, and structure.
@@ -15,7 +18,9 @@ It is designed for learners who want a tutor to infer what the instructor actual
 - Teaches one frame at a time and waits for the learner to say "next frame" or "下一个框架".
 - Explains mainly in Chinese, while preserving only essential finance terms in English.
 - Adds interactive review questions after each frame or lecture.
+- Lets users choose quiz type: AI-decided, multiple choice, true/false, short answer, calculation-heavy, mini-case-heavy, or custom mix.
 - Creates a concise Word review document when the learner says "总结".
+- Keeps private course materials out of the open-source project.
 
 ## Folder Structure
 
@@ -25,6 +30,8 @@ finance-teacher-skill/
 │  ├─ SKILL.md
 │  ├─ agents/
 │  │  └─ openai.yaml
+│  ├─ config/
+│  │  └─ defaults.yaml
 │  └─ references/
 │     └─ teaching-heuristics.md
 ├─ README.md
@@ -49,6 +56,60 @@ C:\Users\<YourName>\.codex\skills\finance-teacher
 ```
 
 Then restart Codex so the skill can be discovered.
+
+## Setup
+
+To configure the tutor before using it, ask:
+
+```text
+Use $finance-teacher. Setup finance-teacher.
+```
+
+Or in Chinese:
+
+```text
+Use $finance-teacher。配置 finance-teacher。
+```
+
+The skill can help you choose:
+
+- Learning preset
+- Language mode
+- Transcript/PPT weighting
+- Framework pacing
+- Quiz type
+- Difficulty
+- Feedback style
+- Summary document style
+
+Default settings live in:
+
+```text
+finance-teacher/config/defaults.yaml
+```
+
+## Learning Presets
+
+| Preset | Best for | Behavior |
+|---|---|---|
+| Classroom Mode | Learning after class | Balanced explanation, 5-10 frameworks, one frame at a time, adaptive questions |
+| Exam Mode | Exam preparation | More formulas, traps, likely question types, mistake repair, and high-yield review |
+| Fast Review Mode | Quick recall | Shorter explanations, fewer checks, compact framework summaries |
+| Advanced Custom Mode | Power users | User controls language, weights, quiz types, difficulty, pacing, and summary style |
+
+## Quiz Customization
+
+Supported quiz modes:
+
+- AI decides
+- Multiple choice only
+- True/false only
+- Short answer only
+- Calculation-heavy
+- Mini-case-heavy
+- Custom mix
+
+By default, the skill chooses the question type based on the lecture content. Each standard frame should include a concept check, an application or setup question, and a misconception/trap question when appropriate.
 
 ## Basic Usage
 
@@ -84,6 +145,26 @@ When you finish a course or lecture sequence, say:
 ```
 
 The skill will create a concise Word review document with framework notes and mistake highlights.
+
+## Privacy And Copyright
+
+Do not commit real course materials to GitHub. Lecture slides, transcripts, recordings, textbook PDFs, and screenshots may be copyrighted or private.
+
+This repo's `.gitignore` excludes common course-material folders and file types such as:
+
+```text
+materials/
+lectures/
+transcripts/
+slides/
+*.pptx
+*.pdf
+*.docx
+*.mp3
+*.mp4
+```
+
+Use fake sample content or openly licensed material for public examples.
 
 ## Teaching Philosophy
 
