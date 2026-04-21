@@ -1,0 +1,19 @@
+.DS_Store
+Thumbs.db
+
+# Local editor files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+~$*
+
+# Python caches, if helper scripts are added later
+__pycache__/
+*.py[cod]
+
+# OS and local logs
+*.log
