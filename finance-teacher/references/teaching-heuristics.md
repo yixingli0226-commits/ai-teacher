@@ -204,7 +204,7 @@ Adaptive feedback:
 
 ## Summary Document Design
 
-When the user asks "总结" after a course or lecture sequence, create a compact Word review document, not a long prose recap.
+When the user asks "总结文档", "create summary document", "generate review notes", or "make a review document" after a course or lecture sequence, create a compact Word review document, not a long prose recap.
 
 Use the original teaching framework as the document skeleton. The goal is quick memory recovery:
 

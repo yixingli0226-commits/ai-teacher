@@ -1,6 +1,6 @@
 interface:
   display_name: "Finance Teacher"
   short_description: "Configurable finance lecture tutor with quizzes."
-  default_prompt: "Use $finance-teacher in Classroom Mode to build a framework roadmap from my finance PPT and transcript, teach one frame at a time, and quiz me interactively."
+  default_prompt: "Use $finance-teacher in Classroom Mode to build a framework roadmap from my finance PPT and transcript, teach one frame at a time, quiz me interactively, and create a summary document when I ask."
 policy:
   allow_implicit_invocation: true

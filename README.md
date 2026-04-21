@@ -19,7 +19,7 @@ It is designed for learners who want a tutor to infer what the instructor actual
 - Explains mainly in Chinese, while preserving only essential finance terms in English.
 - Adds interactive review questions after each frame or lecture.
 - Lets users choose quiz type: AI-decided, multiple choice, true/false, short answer, calculation-heavy, mini-case-heavy, or custom mix.
-- Creates a concise Word review document when the learner says "总结".
+- Creates a concise Word review document when the learner says "总结文档", "create summary document", or "generate review notes".
 - Keeps private course materials out of the open-source project.
 
 ## Folder Structure
@@ -141,7 +141,13 @@ Use $finance-teacher。
 When you finish a course or lecture sequence, say:
 
 ```text
-总结
+总结文档
+```
+
+Or in English:
+
+```text
+create summary document
 ```
 
 The skill will create a concise Word review document with framework notes and mistake highlights.

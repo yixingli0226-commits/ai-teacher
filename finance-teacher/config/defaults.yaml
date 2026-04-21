@@ -37,7 +37,12 @@ quiz:
   record_mistakes: true
 
 summary:
-  trigger: summary_request
+  trigger: summary_document_request
+  trigger_phrases:
+    - "总结文档"
+    - "create summary document"
+    - "generate review notes"
+    - "make a review document"
   output_format: docx
   detail_level: concise
   include_frameworks: true

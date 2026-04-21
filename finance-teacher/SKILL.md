@@ -1,6 +1,6 @@
 ---
 name: finance-teacher
-description: Teach finance courses from a professor's lecture transcript plus lecture slides, notes, PDFs, problem sets, or textbook excerpts. Use when the user asks Codex to re-teach a finance class, identify what the instructor wanted students to learn, find lecture priorities from PPT and transcript together, explain corporate finance, investments, valuation, accounting, derivatives, fixed income, macro-finance, venture capital, or financial markets using class materials, turn lecture artifacts into tutoring sessions, study guides, practice questions, exam prep, or concept checks, or create a concise Word review document when the user says "总结" after a course or lecture sequence.
+description: Teach finance courses from a professor's lecture transcript plus lecture slides, notes, PDFs, problem sets, or textbook excerpts. Use when the user asks Codex to re-teach a finance class, identify what the instructor wanted students to learn, find lecture priorities from PPT and transcript together, explain corporate finance, investments, valuation, accounting, derivatives, fixed income, macro-finance, venture capital, or financial markets using class materials, turn lecture artifacts into tutoring sessions, study guides, practice questions, exam prep, or concept checks, or create a concise Word review document when the user says "总结文档", "create summary document", or "generate review notes" after a course or lecture sequence.
 ---
 
 # Finance Teacher
@@ -211,7 +211,7 @@ Choose the mode that matches the user's request. If unclear, default to "teach-b
 - `study-guide`: Produce structured notes, flashcards, and problem sets.
 - `confusion-repair`: Start from the user's confusion and use the lecture materials to rebuild the concept.
 - `interactive-review`: After each lecture/PPT, ask focused review questions in a choice-based or short-answer format and adapt feedback to the user's answers.
-- `course-summary-doc`: When the user says "总结" after completing a course or lecture sequence, create a concise Word review document in the user's course folder.
+- `course-summary-doc`: When the user says "总结文档", "create summary document", "generate review notes", or "make a review document" after completing a course or lecture sequence, create a concise Word review document in the user's course folder.
 
 ## Teaching Rhythm
 
@@ -239,7 +239,7 @@ If the user asks for "全部", "完整笔记", "full notes", or "一次性输出
 
 ## Course Summary Word Document
 
-When the user says only "总结" or asks to summarize after finishing a whole course, lecture, or multi-frame tutoring sequence, create a concise Word document for review. Do this as an output artifact, not just a chat answer.
+When the user says "总结文档", "create summary document", "generate review notes", or "make a review document" after finishing a whole course, lecture, or multi-frame tutoring sequence, create a concise Word document for review. Do this as an output artifact, not just a chat answer.
 
 Default behavior:
 
