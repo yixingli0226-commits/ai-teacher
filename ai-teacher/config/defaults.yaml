@@ -1,27 +1,27 @@
-# Default configuration for the finance-teacher Codex skill.
+# Default configuration for the ai-teacher Codex skill.
 # Users can copy this file and adjust values for their own course.
 
 profile:
   mode: classroom
-  language_mode: chinese_with_core_english_terms
+  language_mode: match_user_language_with_core_original_terms
   learner_level: auto
   learning_goal: course_review
 
 source_weighting:
   transcript_weight: 6.5
-  ppt_weight: 3.5
+  slides_weight: 3.5
   background_knowledge_policy: clarify_only
 
 framework:
-  min_frames: 5
-  max_frames: 10
-  pacing: one_frame_at_a_time
-  wait_for_next_frame: true
+  min_frameworks: 5
+  max_frameworks: 10
+  pacing: one_framework_at_a_time
+  wait_for_next_framework: true
 
 quiz:
   mode: ai_decides
-  questions_per_frame_min: 2
-  questions_per_frame_max: 4
+  questions_per_framework_min: 2
+  questions_per_framework_max: 4
   default_question_types:
     - concept_check
     - application
@@ -47,7 +47,7 @@ summary:
   detail_level: concise
   include_frameworks: true
   include_key_terms: true
-  include_formulas: true
+  include_formulas_definitions_or_procedures: true
   include_mistake_highlights: true
 
 privacy:

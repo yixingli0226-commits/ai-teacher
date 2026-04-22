@@ -1,79 +1,84 @@
-# Finance Teacher Skill
+# AI Teacher Skill
 
-`finance-teacher` is a Codex skill for re-teaching finance lectures from a professor's PPT/slides and lecture transcript.
+`ai-teacher` is a Codex skill that turns lecture materials into an interactive AI tutor.
 
-It is designed for learners who want a tutor to infer what the instructor actually wanted students to learn, rather than only summarizing slide headings.
+It is designed for any course where a learner has:
 
-## What It Does
+- lecture slides or PPT files
+- a professor's lecture transcript
+- optional notes, readings, problem sets, or background materials
 
-- Uses both lecture transcripts and PPT/slides.
-- Includes a setup flow for language, weighting, quiz style, difficulty, and summary preferences.
-- Provides three learning presets: Classroom Mode, Exam Mode, and Fast Review Mode.
-- Supports Advanced Custom Mode for users who want full control.
-- Weights the transcript at 6.5/10 and the PPT/slides at 3.5/10 when inferring lecture priorities.
-- Uses the transcript for emphasis, pacing, teacher intent, examples, warnings, and exam cues.
-- Uses the PPT/slides for formal definitions, formulas, diagrams, tables, official terminology, and structure.
-- Handles imperfect automatic transcripts with possible spelling or recognition errors.
-- Builds a 5-10 frame teaching roadmap before teaching.
-- Teaches one frame at a time and waits for the learner to say "next frame" or "下一个框架".
-- Explains mainly in Chinese, while preserving only essential finance terms in English.
-- Adds interactive review questions after each frame or lecture.
-- Lets users choose quiz type: AI-decided, multiple choice, true/false, short answer, calculation-heavy, mini-case-heavy, or custom mix.
-- Creates a concise Word review document when the learner says "总结文档", "create summary document", or "generate review notes".
-- Keeps private course materials out of the open-source project.
+Instead of only summarizing slides, the skill combines the transcript and slides to infer what the instructor actually wanted students to learn. It then builds a teaching roadmap, teaches one framework at a time, asks interactive review questions, tracks weak points, and can generate concise review notes.
+
+## What This Skill Does
+
+- Re-teaches lectures from slides plus transcripts.
+- Works across many subjects: business, economics, computer science, math, statistics, biology, medicine, law, social science, humanities, language learning, and more.
+- Separates today's primary materials from background knowledge.
+- Weights the transcript at 6.5/10 and the slides at 3.5/10 by default when inferring lecture priorities.
+- Uses transcripts to detect teacher emphasis, examples, warnings, repeated points, exam cues, and explanations.
+- Uses slides to preserve structure, definitions, formulas, diagrams, tables, terminology, and visual material.
+- Handles imperfect transcripts with spelling errors, recognition mistakes, broken punctuation, and misheard terms.
+- Builds a 5-10 framework roadmap before teaching.
+- Teaches one framework at a time instead of dumping the whole lecture at once.
+- Adds interactive review questions after each framework.
+- Lets users customize language, pacing, source weights, quiz type, difficulty, and feedback style.
+- Provides Classroom Mode, Exam Mode, Fast Review Mode, and Advanced Custom Mode.
+- Creates a concise review document when the user says `总结文档`, `create summary document`, or `generate review notes`.
+- Records wrong or weak answers for a final Mistake Highlights section.
+- Keeps private course materials out of the open-source repository.
+
+## Core Idea
+
+Slides show the official structure of a lecture. Transcripts reveal how the instructor actually taught it.
+
+`ai-teacher` uses both:
+
+| Source | Default weight | Best for |
+|---|---:|---|
+| Transcript | 6.5 / 10 | Emphasis, examples, explanations, warnings, exam cues, teacher intent |
+| Slides / PPT | 3.5 / 10 | Definitions, formulas, diagrams, tables, structure, official terminology |
+
+The transcript has more weight for deciding what matters, but the slides protect against missing formal material.
 
 ## Folder Structure
 
 ```text
-finance-teacher-skill/
-├─ finance-teacher/
-│  ├─ SKILL.md
-│  ├─ agents/
-│  │  └─ openai.yaml
-│  ├─ config/
-│  │  └─ defaults.yaml
-│  └─ references/
-│     └─ teaching-heuristics.md
-├─ README.md
-├─ LICENSE
-└─ .gitignore
+ai-teacher/
+|-- ai-teacher/
+|   |-- SKILL.md
+|   |-- agents/
+|   |   `-- openai.yaml
+|   |-- config/
+|   |   `-- defaults.yaml
+|   `-- references/
+|       `-- teaching-heuristics.md
+|-- README.md
+|-- LICENSE
+`-- .gitignore
 ```
+
+The actual Codex skill folder is:
+
+```text
+ai-teacher/
+```
+
+Inside that folder, `SKILL.md` is the required skill entry point.
 
 ## Installation
 
-Codex discovers a skill when the skill folder itself is directly inside your Codex skills directory. In this repo, the actual skill folder is:
+Codex discovers a skill when the skill folder itself is directly inside your Codex skills directory.
 
-```text
-finance-teacher/
-```
-
-So users should copy the `finance-teacher` folder into their Codex skills directory.
-
-On macOS or Linux:
-
-```text
-~/.codex/skills/finance-teacher
-```
-
-On Windows:
-
-```text
-C:\Users\<YourName>\.codex\skills\finance-teacher
-```
-
-Then restart Codex so the skill can be discovered.
-
-### Install From GitHub
-
-Option 1: Download ZIP
+### Option 1: Download ZIP
 
 1. Open this GitHub repo.
 2. Click `Code` -> `Download ZIP`.
 3. Unzip the file.
-4. Copy the inner `finance-teacher` folder into your Codex skills directory.
+4. Copy the inner `ai-teacher` folder into your Codex skills directory.
 5. Restart Codex.
 
-Option 2: Clone with Git
+### Option 2: Clone With Git
 
 ```bash
 git clone https://github.com/yixingli0226-commits/ai-teacher.git
@@ -82,106 +87,53 @@ git clone https://github.com/yixingli0226-commits/ai-teacher.git
 Then copy:
 
 ```text
-ai-teacher/finance-teacher
+ai-teacher/ai-teacher
 ```
 
 to:
 
 ```text
-~/.codex/skills/finance-teacher
+~/.codex/skills/ai-teacher
 ```
 
-On Windows, copy it to:
+On Windows:
 
 ```text
-C:\Users\<YourName>\.codex\skills\finance-teacher
+C:\Users\<YourName>\.codex\skills\ai-teacher
 ```
 
-Important: do not place only the whole `ai-teacher` repo inside `.codex/skills` and expect Codex to discover it automatically. The `SKILL.md` file must be at:
+The final path should be:
 
 ```text
-~/.codex/skills/finance-teacher/SKILL.md
+~/.codex/skills/ai-teacher/SKILL.md
 ```
 
-## Setup
+Do not place only the whole GitHub repo inside `.codex/skills` and expect Codex to discover it automatically.
 
-To configure the tutor before using it, ask:
+## Quick Start
 
-```text
-Use $finance-teacher. Setup finance-teacher.
-```
-
-Or in Chinese:
+Upload the PPT/slides and lecture transcript for one class, then ask:
 
 ```text
-Use $finance-teacher。配置 finance-teacher。
-```
+Use $ai-teacher.
 
-The skill can help you choose:
-
-- Learning preset
-- Language mode
-- Transcript/PPT weighting
-- Framework pacing
-- Quiz type
-- Difficulty
-- Feedback style
-- Summary document style
-
-Default settings live in:
-
-```text
-finance-teacher/config/defaults.yaml
-```
-
-## Learning Presets
-
-| Preset | Best for | Behavior |
-|---|---|---|
-| Classroom Mode | Learning after class | Balanced explanation, 5-10 frameworks, one frame at a time, adaptive questions |
-| Exam Mode | Exam preparation | More formulas, traps, likely question types, mistake repair, and high-yield review |
-| Fast Review Mode | Quick recall | Shorter explanations, fewer checks, compact framework summaries |
-| Advanced Custom Mode | Power users | User controls language, weights, quiz types, difficulty, pacing, and summary style |
-
-## Quiz Customization
-
-Supported quiz modes:
-
-- AI decides
-- Multiple choice only
-- True/false only
-- Short answer only
-- Calculation-heavy
-- Mini-case-heavy
-- Custom mix
-
-By default, the skill chooses the question type based on the lecture content. Each standard frame should include a concept check, an application or setup question, and a misconception/trap question when appropriate.
-
-## Basic Usage
-
-Upload the PPT and transcript for the lecture, then ask:
-
-```text
-Use $finance-teacher.
-
-The uploaded PPT and transcript are the primary materials for today's lecture.
+The uploaded slides and transcript are the primary materials for today's lecture.
 Other files in the folder are background knowledge only.
-Please infer the professor's priorities from the primary materials.
+Infer the instructor's priorities from the primary materials.
 Use background knowledge only to clarify concepts or prerequisites.
-Build a 5-10 frame roadmap, then teach me one frame at a time.
+Build a 5-10 framework roadmap, then teach me one framework at a time.
 ```
 
-Chinese prompt example:
+Chinese example:
 
 ```text
-Use $finance-teacher。
+Use $ai-teacher。
 
 我上传的 PPT 和 transcript 是今天这节课的主材料。
 文件夹里的其他资料都是 background knowledge。
 请只根据主材料判断老师真正想让我学什么。
-用中文讲解，只在核心金融术语上保留英文。
 先生成 5-10 个 framework，然后一个 framework 一个 framework 教我。
-讲完每个 framework 后用选择题互动复习。
+每个 framework 结束后用互动题巩固我。
 ```
 
 When you finish a course or lecture sequence, say:
@@ -196,11 +148,77 @@ Or in English:
 create summary document
 ```
 
-The skill will create a concise Word review document with framework notes and mistake highlights.
+The skill will create a concise review document with framework notes and Mistake Highlights.
+
+## Setup Mode
+
+To configure the tutor before using it:
+
+```text
+Use $ai-teacher. Setup ai-teacher.
+```
+
+Chinese:
+
+```text
+Use $ai-teacher。配置 ai-teacher。
+```
+
+The setup flow can customize:
+
+- language mode
+- transcript/slides weighting
+- framework pacing
+- quiz type
+- difficulty
+- feedback style
+- summary document style
+- background knowledge policy
+
+Default settings live in:
+
+```text
+ai-teacher/config/defaults.yaml
+```
+
+## Learning Modes
+
+| Mode | Best for | Behavior |
+|---|---|---|
+| Classroom Mode | Learning after class | Balanced explanation, 5-10 frameworks, one framework at a time, adaptive questions |
+| Exam Mode | Test preparation | More high-yield points, likely question types, traps, formulas, and mistake repair |
+| Fast Review Mode | Quick recall | Shorter explanations, fewer checks, compact framework summaries |
+| Advanced Custom Mode | Power users | User controls language, weights, quiz type, difficulty, pacing, and summary style |
+
+## Quiz Customization
+
+Supported quiz modes:
+
+- AI decides
+- Multiple choice only
+- True/false only
+- Short answer only
+- Calculation-heavy
+- Mini-case-heavy
+- Custom mix
+
+By default, the skill chooses question types based on the lecture content. A normal framework should include a concept check, an application or setup question, and a misconception/trap question when appropriate.
+
+## Output Style
+
+The skill avoids long plain-text dumps. It uses:
+
+- roadmap tables
+- clear headings
+- compact bullets
+- formula or definition blocks when useful
+- key term tables
+- interactive question cards
+- Mistake Highlights tables
 
 ## Privacy And Copyright
 
-Do not commit real course materials to GitHub. Lecture slides, transcripts, recordings, textbook PDFs, and screenshots may be copyrighted or private.
+Do not commit real course materials to GitHub. Lecture slides, transcripts, recordings, textbook PDFs, screenshots, and private notes may be copyrighted or private.
 
 This repo's `.gitignore` excludes common course-material folders and file types such as:
 
@@ -217,16 +235,6 @@ slides/
 ```
 
 Use fake sample content or openly licensed material for public examples.
-
-## Teaching Philosophy
-
-The skill treats the transcript as the stronger signal for what the teacher cared about, but it still uses slides to avoid missing formulas, diagrams, definitions, and official terminology.
-
-It avoids dumping the whole lecture at once. Instead, it creates a structured teaching rhythm:
-
-```text
-Preview -> Explain -> Example -> Connect -> Check -> Recap -> Pause
-```
 
 ## License
 

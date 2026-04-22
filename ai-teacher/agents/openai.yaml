@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Teacher"
+  short_description: "Configurable lecture tutor from slides and transcripts."
+  default_prompt: "Use $ai-teacher in Classroom Mode to build a framework roadmap from my lecture slides and transcript, teach one framework at a time, and quiz me interactively."
+policy:
+  allow_implicit_invocation: true
